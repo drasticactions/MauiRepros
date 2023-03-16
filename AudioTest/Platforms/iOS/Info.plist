@@ -9,6 +9,8 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>Reason reason reason...</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
