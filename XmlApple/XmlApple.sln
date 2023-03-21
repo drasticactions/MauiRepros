@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlApple.iOS", "XmlApple.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlApple.Maui", "XmlApple.Maui\XmlApple.Maui.csproj", "{AD9DC3D3-DCDC-41A5-A0B5-99F8C87508E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlApple.Console", "XmlApple.Console\XmlApple.Console.csproj", "{3429F480-21E7-4F5D-828B-A78C6734FF0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{AD9DC3D3-DCDC-41A5-A0B5-99F8C87508E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9DC3D3-DCDC-41A5-A0B5-99F8C87508E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9DC3D3-DCDC-41A5-A0B5-99F8C87508E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3429F480-21E7-4F5D-828B-A78C6734FF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3429F480-21E7-4F5D-828B-A78C6734FF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3429F480-21E7-4F5D-828B-A78C6734FF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3429F480-21E7-4F5D-828B-A78C6734FF0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
