@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LabelTest.MainPage">
+
+    <Grid RowDefinitions="*, Auto">
+        <ScrollView Background="Red">
+        <Label BackgroundColor="Green"
+                x:Name="HelloWorld"
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Start"
+                />
+    </ScrollView>
+        <Button Grid.Row="1" Clicked="Button_Clicked" Text="Change Position of Label to end."/>
+    </Grid>
+
+</ContentPage>
