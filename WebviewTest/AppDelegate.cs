@@ -51,7 +51,7 @@ public class TestViewController : UIViewController
 			make.Bottom.EqualTo(this.View).With.Offset(-200);
         });
 
-        webview = WebKitTools.WebViewFactory.CreateDebugWebView(this.webviewHolder.Bounds, configuration);
+        webview = new WebKit.WKWebView(this.webviewHolder.Bounds, configuration);
 
         this.webviewHolder.Add(webview);
 
