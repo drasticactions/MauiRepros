@@ -1,6 +1,0 @@
-framework module WebKitTools {
-  umbrella header "WebKitTools.h"
-
-  export *
-  module * { export * }
-}
