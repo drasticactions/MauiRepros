@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LabelCatalyst.MainPage">
+
+    <ScrollView>
+        <Grid Margin="10" RowSpacing="10" RowDefinitions="Auto, *">
+             <Grid RowSpacing="10" RowDefinitions="Auto, Auto, *, Auto" Grid.Row="1">
+                <Grid ColumnDefinitions="30, Auto, Auto, Auto, Auto" ColumnSpacing="10">
+                            <Label FontSize="Caption" VerticalOptions="Center" Text="Start: "/>
+                            <CheckBox Grid.Column="1" />
+                            <Entry Grid.Column="2" Keyboard="Numeric" />
+                        </Grid>
+             </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

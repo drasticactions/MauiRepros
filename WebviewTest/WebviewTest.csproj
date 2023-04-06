@@ -15,5 +15,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Drastic.Masonry" Version="1.0.2" />
+    <PackageReference Include="Drastic.WebKitTools" Version="1.0.3" />
   </ItemGroup>
 </Project>

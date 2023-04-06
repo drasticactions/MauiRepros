@@ -45,15 +45,13 @@ public class TestViewController : UIViewController
 		this.View!.Add(this.button);
 
         var configuration = new WebKit.WKWebViewConfiguration();
-
+		// configuration.Preferences.SetValueForKey(NSNumber.FromBoolean(true), new NSString("developerExtrasEnabled"));
 		this.webviewHolder.MakeConstraints(make => {
 			make.Top.And.Left.And.Right.EqualTo(this.View!);
 			make.Bottom.EqualTo(this.View).With.Offset(-200);
         });
 
-        webview = new WebKit.WKWebView(this.webviewHolder.Bounds, configuration)
-        {
-        };
+        webview = WebKitTools.WebViewFactory.CreateDebugWebView(this.webviewHolder.Bounds, configuration);
 
         this.webviewHolder.Add(webview);
 
