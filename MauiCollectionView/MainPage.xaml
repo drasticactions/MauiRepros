@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCollectionView.MainPage">
+
+   <Grid RowSpacing="15" RowDefinitions="*, Auto">
+        <CollectionView x:Name="TestCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label HorizontalOptions="Center" Text="{Binding .}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="1" Margin="15" Clicked="Button_Clicked" Text="Debug List"/>
+   </Grid>
+</ContentPage>
