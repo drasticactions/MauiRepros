@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
 
     private void Button_Clicked_1(object sender, EventArgs e)
     {
-        this.Items = new ObservableCollection<string>() { "Test1", "Hoge", "Foobar" };
+        this.Items = new ObservableCollection<string>() { "Test2", "Hoge2", "Foobar2" };
         this.TestCollectionView.ItemsSource = this.Items;
     }
 }
