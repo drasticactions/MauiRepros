@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EmojiLabelWinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "EmojiLabelWinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
