@@ -24,15 +24,24 @@ public partial class ListPickerViewModel : BaseViewModel
     public override void OnAppearing()
     {
         base.OnAppearing();
+
+        // Run this on the background thread...
+        Task.Run(() =>
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                AvailableValues.Add(new ListPickerItemViewModel { Value = i, Label = i.ToString(), IsSelected = i == 3 });
+            }
+        });
     }
 
     public ListPickerViewModel()
     {
-        // Created when the view-model is created.
-        for (int i = 0; i < 12; i++)
-        {
-            AvailableValues.Add(new ListPickerItemViewModel { Value = i, Label = i.ToString(), IsSelected = i == 3 });
-        }
+        // Or create it when the view-model is created.
+        // for (int i = 0; i < 12; i++)
+        // {
+        //     AvailableValues.Add(new ListPickerItemViewModel { Value = i, Label = i.ToString(), IsSelected = i == 3 });
+        // }
     }
 
     /// <inheritdoc />
