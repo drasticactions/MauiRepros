@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestProject"
+    xmlns:viewModels="clr-namespace:TestProject.ViewModels"
+    
+    x:Class="TestProject.ListPickerPage"
+    Shell.PresentationMode="Animated"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False"
+    Title="List picker">
+
+    <Grid
+        RowSpacing="0"
+        RowDefinitions="auto,*">
+        <Grid BackgroundColor="OrangeRed" Grid.Row="0" HeightRequest="50">
+            <Label Text="The rendering of collection view takes too much time that we put an activity indicator"/>
+        </Grid>
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding AvailableValues}"
+            x:Name="CollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:ListPickerItemViewModel">
+                    <Grid RowSpacing="0" ColumnSpacing="16"
+                          RowDefinitions="64,1"
+                          HeightRequest="65"
+                          ColumnDefinitions="auto,*">
+                        <Image
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Margin="16,0,0,0"
+                            IsVisible="{Binding IsPickerValueWithIcon}"
+                            WidthRequest="20"
+                            HeightRequest="20">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding IsSelected}" Value="true">
+                                    <Setter Property="Source" Value="{Binding IconSelectedFileName}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding IsSelected}" Value="false">
+                                    <Setter Property="Source" Value="{Binding IconNotSelectedFileName}"/>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <VerticalStackLayout
+                            Spacing="0"
+                            Grid.Column="1"
+                            Grid.RowSpan="2"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                Text="{Binding Label}"
+                                FontSize="16">
+                                <Label.Triggers>
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsSelected}" Value="True" />
+                                            <BindingCondition Binding="{Binding IsPossibleToChoose}" Value="True" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="TextColor" Value="LightBlue" />
+                                    </MultiTrigger>
+
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsSelected}" Value="True" />
+                                            <BindingCondition Binding="{Binding IsPossibleToChoose}" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="TextColor" Value="DarkGray" />
+                                    </MultiTrigger>
+
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsSelected}" Value="False" />
+                                            <BindingCondition Binding="{Binding IsPossibleToChoose}" Value="True" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="TextColor" Value="DarkGray" />
+                                    </MultiTrigger>
+
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding IsSelected}" Value="False" />
+                                            <BindingCondition Binding="{Binding IsPossibleToChoose}" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="TextColor" Value="DarkGray" />
+                                    </MultiTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label
+                                Text="{Binding Description}"
+                                FontSize="12"
+                                TextColor="DarkGrey"
+                                IsVisible="False">
+                            </Label>
+                        </VerticalStackLayout>
+                        <BoxView
+                            Color="DarkGray"
+                            HeightRequest="1"
+                            Margin="16,0,16,0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ActivityIndicator
+            Grid.Row="1"
+            HeightRequest="50"
+            WidthRequest="50"
+            IsVisible="{Binding IsLoading}"
+            IsRunning="True"/>
+    </Grid>
+</local:BasePage>

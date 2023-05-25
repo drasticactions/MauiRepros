@@ -1,0 +1,242 @@
+--- A/MainPage.xaml
++++ B/MainPage.xaml
+@@ -39,27 +39,32 @@
+         </Style>
+ 
+         <DataTemplate x:Key="GenericSectionDataTemplate" x:DataType="viewModels:GenericSectionItemViewModel">
++            <Grid BackgroundColor="LightGray" HeightRequest="100" Padding="16,0,16,0">
++                <Label Text="{Binding Title}" VerticalOptions="Center" Style="{StaticResource BigBlueLabelStyle}" />
++            </Grid>
+-            <StackLayout BackgroundColor="LightGray" HeightRequest="100" Padding="16,24,16,16">
+-                <Label Text="{Binding Title}" Style="{StaticResource BigBlueLabelStyle}" />
+-            </StackLayout>
+         </DataTemplate>
+ 
+         <DataTemplate x:Key="GenericQuantityDataTemplate" x:DataType="viewModels:GenericQuantityItemViewModel">
+             <!--Added extra row for handling top space and reduce UI complexity-->
++            <Grid
++                Padding="0,16,0,0"
++                RowSpacing="16"
++                ColumnSpacing="0"
++                MinimumHeightRequest="64"
++                RowDefinitions="Auto,Auto,1"
++                ColumnDefinitions="*,Auto">
+-            <Grid HeightRequest="300" RowSpacing="16" ColumnSpacing="0" MinimumHeightRequest="64"
+-                  RowDefinitions="Auto, Auto, Auto"
+-                  ColumnDefinitions="*, Auto, Auto">
+ 
++                <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Margin="16,0,0,0" Spacing="9">
+-                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="16,0,0,0" Spacing="9">
+                     <Label Style="{StaticResource BigLabelStyle}" MaxLines="2" LineBreakMode="TailTruncation"
+                            Text="{Binding Label}" VerticalOptions="Center" />
+                     <Image IsVisible="{Binding IsInformationVisible}" Source="dotnet_bot.png" HeightRequest="22"
+                            WidthRequest="22" />
++                </HorizontalStackLayout>
++                <Label Grid.Row="0" Grid.Column="1" Margin="16,0,16,0" Style="{StaticResource BigLabelStyle}"
+-                </StackLayout>
+-                <Label Grid.Row="1" Grid.Column="1" Margin="16,0,16,0" Style="{StaticResource BigLabelStyle}"
+                        FontAttributes="Bold"
++                       HorizontalTextAlignment="Center"
+                        Text="{Binding Quantity}" VerticalOptions="Center" />
++                <Grid Grid.Row="1" Grid.Column="1" RowSpacing="0" ColumnSpacing="0" Margin="16,0,16,0">
+-                <Grid RowSpacing="0" ColumnSpacing="0">
+                     <Grid.RowDefinitions>
+                         <RowDefinition Height="1" />
+                         <RowDefinition Height="*" />
+@@ -94,34 +99,25 @@
+ 
+         <DataTemplate x:Key="GenericDetailsWithQuantityDataTemplate"
+                       x:DataType="viewModels:GenericDetailsWithQuantityItemViewModel">
++            <Grid RowSpacing="0" RowDefinitions="Auto,1" ColumnDefinitions="*,Auto">
++
++                <VerticalStackLayout Spacing="0" Padding="16,13,16,13" Grid.Row="0" Grid.Column="0">
++                    <Label Text="{Binding Label}" MaxLines="1" LineBreakMode="TailTruncation"
++                            TextColor="{StaticResource DarkGreyColor}" FontSize="16"
++                            VerticalOptions="CenterAndExpand" />
++                    <Label Text="{Binding SecondLabel}" IsVisible="{Binding SecondLabel}" MaxLines="1"
++                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
++                            VerticalOptions="CenterAndExpand" FontSize="12" />
++                    <Label Text="{Binding ThirdLabel}" IsVisible="{Binding ThirdLabel}" MaxLines="1"
++                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
++                            VerticalOptions="CenterAndExpand" FontSize="12" />
++                    <Label Text="{Binding FourthLabel}" IsVisible="{Binding FourthLabel}" MaxLines="1"
++                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
++                            VerticalOptions="CenterAndExpand" FontSize="12" />
++                    <Label Text="{Binding FifthLabel}" IsVisible="{Binding FifthLabel}" MaxLines="1"
++                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
++                            VerticalOptions="CenterAndExpand" FontSize="12" />
++                </VerticalStackLayout>
+-            <Grid RowSpacing="0">
+-                <Grid.RowDefinitions>
+-                    <RowDefinition Height="Auto" />
+-                    <RowDefinition Height="1" />
+-                </Grid.RowDefinitions>
+-                <Grid.ColumnDefinitions>
+-                    <ColumnDefinition Width="*" />
+-                    <ColumnDefinition Width="Auto" />
+-                </Grid.ColumnDefinitions>
+-                <StackLayout Orientation="Horizontal" Margin="16,13,16,13" Grid.Row="0" Grid.Column="0" Spacing="9">
+-                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+-                        <Label Text="{Binding Label}" MaxLines="1" LineBreakMode="TailTruncation"
+-                               TextColor="{StaticResource DarkGreyColor}" FontSize="16"
+-                               VerticalOptions="CenterAndExpand" />
+-                        <Label Text="{Binding SecondLabel}" IsVisible="{Binding SecondLabel}" MaxLines="1"
+-                               LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+-                               VerticalOptions="CenterAndExpand" FontSize="12" />
+-                        <Label Text="{Binding ThirdLabel}" IsVisible="{Binding ThirdLabel}" MaxLines="1"
+-                               LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+-                               VerticalOptions="CenterAndExpand" FontSize="12" />
+-                        <Label Text="{Binding FourthLabel}" IsVisible="{Binding FourthLabel}" MaxLines="1"
+-                               LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+-                               VerticalOptions="CenterAndExpand" FontSize="12" />
+-                        <Label Text="{Binding FifthLabel}" IsVisible="{Binding FifthLabel}" MaxLines="1"
+-                               LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+-                               VerticalOptions="CenterAndExpand" FontSize="12" />
+-                    </StackLayout>
+-                </StackLayout>
+                 <Label Text="{Binding Quantity}" HeightRequest="64" Margin="16,0,16,0" Grid.Row="0" Grid.Column="1"
+                        MaxLines="1" LineBreakMode="TailTruncation" FontAttributes="Bold"
+                        TextColor="{StaticResource DarkGreyColor}" FontSize="16" VerticalOptions="CenterAndExpand"
+@@ -132,35 +128,26 @@
+         </DataTemplate>
+ 
+         <DataTemplate x:Key="InventoryDetailsDataTemplate" x:DataType="viewModels:GenericDetailsItemViewModel">
++            <Grid Padding="16,0,0,0" RowSpacing="0" ColumnSpacing="16" RowDefinitions="*,Auto,*,1" ColumnDefinitions="64,*">
++                
++                <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" BackgroundColor="{StaticResource LightGreyColor}"
++                      Margin="16,16,16,16" HeightRequest="64" WidthRequest="64">
++                    <Image Source="dotnet_bot.png" HeightRequest="32" WidthRequest="32" />
++
+-            <Grid RowSpacing="0" ColumnSpacing="0">
+-                <Grid.RowDefinitions>
+-                    <RowDefinition Height="Auto" />
+-                    <RowDefinition Height="Auto" />
+-                </Grid.RowDefinitions>
+-                <Grid.ColumnDefinitions>
+-                    <ColumnDefinition Width="Auto" />
+-                    <ColumnDefinition Width="*" />
+-                    <ColumnDefinition Width="Auto" />
+-                </Grid.ColumnDefinitions>
+-                <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource LightGreyColor}"
+-                      Margin="16, 16, 16, 16" HeightRequest="64" WidthRequest="64">
+-                    <Image Source="{TemplateBinding IconName}" HeightRequest="32" WidthRequest="32" />
+                 </Grid>
++
++                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Label}" FontSize="16" HorizontalOptions="Start"
++                        VerticalOptions="End" TextColor="{StaticResource DarkGreyColor}"
++                        FontAttributes="Bold" />
++                <Label Grid.Row="1" Grid.Column="1" Text="{Binding SecondLabel}" FontSize="12" HorizontalOptions="Start"
++                        VerticalOptions="Center" TextColor="{StaticResource MediumGreyColor}" />
++                <HorizontalStackLayout Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" VerticalOptions="Start"
++                                IsVisible="true">
++                    <Label Text="{Binding ThirdLabel}" FontSize="14" HorizontalOptions="Start"
++                            VerticalOptions="Center" TextColor="{StaticResource DarkBlueColor}" />
++                </HorizontalStackLayout>
++                
++                <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,16,0" HeightRequest="1"
+-                <Grid Grid.Row="0" Grid.Column="1" RowSpacing="0" RowDefinitions="*,Auto,Auto,Auto,Auto,*">
+-                    <BoxView Grid.Row="0" />
+-                    <Label Grid.Row="1" Text="{TemplateBinding Title}" FontSize="16" HorizontalOptions="Start"
+-                           VerticalOptions="Center" TextColor="{StaticResource DarkGreyColor}"
+-                           FontAttributes="{TemplateBinding TitleFontAttributes}" />
+-                    <Label Grid.Row="2" Text="{TemplateBinding Description}" FontSize="12" HorizontalOptions="Start"
+-                           VerticalOptions="Center" TextColor="{StaticResource MediumGreyColor}" />
+-                    <StackLayout Grid.Row="4" Orientation="Horizontal" Margin="0,5,0,0"
+-                                 IsVisible="{TemplateBinding IsMessageVisible}">
+-                        <Label Text="{TemplateBinding Message}" FontSize="14" HorizontalOptions="Start"
+-                               VerticalOptions="Center" TextColor="{StaticResource DarkBlueColor}" />
+-                    </StackLayout>
+-                    <BoxView Grid.Row="5" />
+-                </Grid>
+-                <BoxView Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="16,0,16,0" HeightRequest="1"
+                          Color="{StaticResource SmokeGreyColor}" VerticalOptions="EndAndExpand" />
+             </Grid>
+         </DataTemplate>
+@@ -167,13 +154,14 @@
+ 
+         <DataTemplate x:Key="InventorySwipeToDeleteDataTemplate"
+                       x:DataType="viewModels:WiringAccessoriesHeatingPowerItemViewModel">
++            <Grid x:Name="genericSwipeView" RowDefinitions="Auto,1" MinimumHeightRequest="80">
++                <SwipeView Grid.Row="0">
+-            <StackLayout x:Name="genericSwipeView" Spacing="0" MinimumHeightRequest="80">
+-                <SwipeView>
+                     <SwipeView.RightItems>
+                         <SwipeItems>
+                             <SwipeItemView>
++                                <ContentView BackgroundColor="Red">
+-                                <ContentView>
+                                     <Label
++                                        Background="Red"
+                                         Margin="16,0,16,0"
+                                         Text="Delete"
+                                         HeightRequest="30" />
+@@ -181,9 +169,8 @@
+                             </SwipeItemView>
+                         </SwipeItems>
+                     </SwipeView.RightItems>
++                    <Grid>
++                        <VerticalStackLayout Spacing="0" Margin="16,13,16,13">
+-                    <StackLayout Orientation="Horizontal" Margin="16,13,16,13"
+-                                 Spacing="9">
+-                        <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                             <Label Text="{Binding Label}" MaxLines="1" LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource DarkGreyColor}" FontSize="16"
+                                    VerticalOptions="CenterAndExpand" />
+@@ -199,39 +186,31 @@
+                             <Label Text="{Binding FifthLabel}" MaxLines="1" LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource MediumGreyColor}" VerticalOptions="CenterAndExpand"
+                                    FontSize="12" />
++                        </VerticalStackLayout>
++                    </Grid>
+-                        </StackLayout>
+-                    </StackLayout>
+                 </SwipeView>
++                <BoxView Grid.Row="1" Margin="16,0" HeightRequest="1" Color="{StaticResource SmokeGreyColor}" />
++            </Grid>
+-                <BoxView Margin="16,0" HeightRequest="1" Color="{StaticResource SmokeGreyColor}" />
+-            </StackLayout>
+         </DataTemplate>
+ 
++        <DataTemplate x:Key="InventoryPlateRockerImagesDetailsDataTemplate" x:DataType="viewModels:GenericImageDetailsItemViewModel">
++            <Grid RowDefinitions="Auto,1" ColumnDefinitions="64,*" RowSpacing="0" ColumnSpacing="16" Padding="16,0,0,0" BackgroundColor="Olive">
+-        <DataTemplate x:Key="InventoryPlateRockerImagesDetailsDataTemplate">
+-            <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="Olive">
+-                <Grid.RowDefinitions>
+-                    <RowDefinition Height="Auto" />
+-                    <RowDefinition Height="Auto" />
+-                </Grid.RowDefinitions>
+-                <Grid.ColumnDefinitions>
+-                    <ColumnDefinition Width="Auto" />
+-                    <ColumnDefinition Width="*" />
+-                    <ColumnDefinition Width="Auto" />
+-                </Grid.ColumnDefinitions>
+                 <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource LightGreyColor}" Margin="16"
+                       HeightRequest="64" WidthRequest="64">
+                     <Image Source="dotnet_bot.png" />
+-                    <Image Source="dotnet_bot.png" />
+                 </Grid>
++                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="0">
++                    <Label
++                        Text="{Binding FirstLabel}"
++                        Margin="0,20,0,0" FontSize="16"
++                        TextColor="{StaticResource DarkGreyColor}"
++                        FontAttributes="{TemplateBinding TitleFontAttributes}" />
++                    <Label
++                        Text="{Binding SecondLabel}"
++                        FontSize="12"
++                        TextColor="{StaticResource MediumGreyColor}" />
++                </VerticalStackLayout>
++                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,0,16,0" HeightRequest="1"
+-                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="10">
+-                    <StackLayout Orientation="Vertical" Spacing="0">
+-                        <Label Text="{TemplateBinding Title}" Margin="0,20,0,0" FontSize="16" HorizontalOptions="Start"
+-                               VerticalOptions="Center" TextColor="{StaticResource DarkGreyColor}"
+-                               FontAttributes="{TemplateBinding TitleFontAttributes}" />
+-                        <Label Text="{TemplateBinding Description}" FontSize="12" HorizontalOptions="Start"
+-                               VerticalOptions="Center" TextColor="{StaticResource MediumGreyColor}" />
+-                    </StackLayout>
+-                </StackLayout>
+-                <BoxView Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="16,0,16,0" HeightRequest="1"
+                          Color="{StaticResource SmokeGreyColor}" VerticalOptions="EndAndExpand" />
+             </Grid>
+         </DataTemplate>

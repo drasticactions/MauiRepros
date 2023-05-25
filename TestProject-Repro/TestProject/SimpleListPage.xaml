@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:testProject="clr-namespace:TestProject"
+             xmlns:viewModels="clr-namespace:TestProject.ViewModels"
+             xmlns:local="clr-namespace:TestProject.Converters"
+             x:Class="TestProject.SimpleListPage"
+             x:DataType="viewModels:SimpleListViewModel">
+
+    <ContentPage.Resources>
+        <local:ImageSourceConverter x:Key="ImageSourceConverter"/>
+    </ContentPage.Resources>
+    
+    <CollectionView ItemsSource="{Binding Items}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="viewModels:SimpleListItemViewModel">
+                <Grid BackgroundColor="Azure" RowDefinitions="160, auto , auto, 1">
+                    <StackLayout BackgroundColor="LightGreen" VerticalOptions="FillAndExpand" HeightRequest="160">
+                        <Label Text="{Binding Title}" FontSize="16" TextColor="Black" Margin="16,20" MaxLines="4" BackgroundColor="Aquamarine"/>
+                    </StackLayout>
+                    <Button Text="Delete" Grid.Row="1" WidthRequest="100" Margin="10"/>
+                    <Image Source="banner.webp" Grid.Row="2" Margin="5" HeightRequest="50" WidthRequest="50" Aspect="AspectFill"/>
+                    <BoxView Margin="16,0" Color="Red" HeightRequest="1" Grid.Row="3"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>

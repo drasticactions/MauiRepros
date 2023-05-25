@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:testProject="clr-namespace:TestProject"
+             xmlns:viewModels="clr-namespace:TestProject.ViewModels"
+             x:Class="TestProject.MainPage"
+             x:DataType="viewModels:InventoryRoomsOverviewViewModel">
+    <ContentPage.Resources>
+        <Color x:Key="DarkBlueColor">#00477E</Color>
+        <Color x:Key="DarkGreyColor">#4A4A4A</Color>
+        <Color x:Key="MediumGreyColor">#A2A2A2</Color>
+        <Color x:Key="SmokeGreyColor">#DADADA</Color>
+        <Color x:Key="LightGreyColor">#F7F7F7</Color>
+
+        <Style x:Key="BigBlueLabelStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#00477E" />
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="TextColor" Value="#F56400" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="BorderWidth" Value="0" />
+        </Style>
+        <Style TargetType="Label" x:Key="BigLabelStyle">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource DarkGreyColor}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="Label" Binding="{Binding Quantity}" Value="0">
+                    <Setter Property="TextColor" Value="{StaticResource MediumGreyColor}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="GenericSectionDataTemplate" x:DataType="viewModels:GenericSectionItemViewModel">
+            <Grid BackgroundColor="LightGray" HeightRequest="100" Padding="16,0,16,0">
+                <Label Text="{Binding Title}" VerticalOptions="Center" Style="{StaticResource BigBlueLabelStyle}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GenericQuantityDataTemplate" x:DataType="viewModels:GenericQuantityItemViewModel">
+            <!--Added extra row for handling top space and reduce UI complexity-->
+            <Grid
+                Padding="0,16,0,0"
+                RowSpacing="16"
+                ColumnSpacing="0"
+                MinimumHeightRequest="64"
+                RowDefinitions="Auto,Auto,1"
+                ColumnDefinitions="*,Auto">
+
+                <HorizontalStackLayout Grid.Row="0" Grid.Column="0" Margin="16,0,0,0" Spacing="9">
+                    <Label Style="{StaticResource BigLabelStyle}" MaxLines="2" LineBreakMode="TailTruncation"
+                           Text="{Binding Label}" VerticalOptions="Center" />
+                    <Image IsVisible="{Binding IsInformationVisible}" Source="dotnet_bot.png" HeightRequest="22"
+                           WidthRequest="22" />
+                </HorizontalStackLayout>
+                <Label Grid.Row="0" Grid.Column="1" Margin="16,0,16,0" Style="{StaticResource BigLabelStyle}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding Quantity}" VerticalOptions="Center" />
+                <Grid Grid.Row="1" Grid.Column="1" RowSpacing="0" ColumnSpacing="0" Margin="16,0,16,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="1"
+                             Color="{StaticResource MediumGreyColor}" />
+                    <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="1"
+                             Color="{StaticResource MediumGreyColor}" />
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" WidthRequest="1"
+                             Color="{StaticResource MediumGreyColor}" />
+                    <BoxView Grid.Row="0" Grid.Column="4" Grid.RowSpan="3" WidthRequest="1"
+                             Color="{StaticResource MediumGreyColor}" />
+
+                    <Button Grid.Row="1" Grid.Column="1" Text="-" Style="{StaticResource ButtonStyle}" />
+                    <BoxView Grid.Row="1" Grid.Column="2" WidthRequest="1" Margin="0,7"
+                             Color="{StaticResource SmokeGreyColor}" />
+                    <Button Grid.Row="1" Grid.Column="3" Text="+" Style="{StaticResource ButtonStyle}" />
+                </Grid>
+                <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="1" Margin="16,0,16,0"
+                         Color="{StaticResource SmokeGreyColor}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GenericDetailsWithQuantityDataTemplate"
+                      x:DataType="viewModels:GenericDetailsWithQuantityItemViewModel">
+            <Grid RowSpacing="0" RowDefinitions="Auto,1" ColumnDefinitions="*,Auto">
+
+                <VerticalStackLayout Spacing="0" Padding="16,13,16,13" Grid.Row="0" Grid.Column="0">
+                    <Label Text="{Binding Label}" MaxLines="1" LineBreakMode="TailTruncation"
+                            TextColor="{StaticResource DarkGreyColor}" FontSize="16"
+                            VerticalOptions="CenterAndExpand" />
+                    <Label Text="{Binding SecondLabel}" IsVisible="{Binding SecondLabel}" MaxLines="1"
+                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+                            VerticalOptions="CenterAndExpand" FontSize="12" />
+                    <Label Text="{Binding ThirdLabel}" IsVisible="{Binding ThirdLabel}" MaxLines="1"
+                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+                            VerticalOptions="CenterAndExpand" FontSize="12" />
+                    <Label Text="{Binding FourthLabel}" IsVisible="{Binding FourthLabel}" MaxLines="1"
+                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+                            VerticalOptions="CenterAndExpand" FontSize="12" />
+                    <Label Text="{Binding FifthLabel}" IsVisible="{Binding FifthLabel}" MaxLines="1"
+                            LineBreakMode="TailTruncation" TextColor="{StaticResource MediumGreyColor}"
+                            VerticalOptions="CenterAndExpand" FontSize="12" />
+                </VerticalStackLayout>
+                <Label Text="{Binding Quantity}" HeightRequest="64" Margin="16,0,16,0" Grid.Row="0" Grid.Column="1"
+                       MaxLines="1" LineBreakMode="TailTruncation" FontAttributes="Bold"
+                       TextColor="{StaticResource DarkGreyColor}" FontSize="16" VerticalOptions="CenterAndExpand"
+                       VerticalTextAlignment="Center" />
+                <BoxView Margin="16,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0"
+                         Color="{StaticResource SmokeGreyColor}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="InventoryDetailsDataTemplate" x:DataType="viewModels:GenericDetailsItemViewModel">
+            <Grid Padding="16,0,0,0" RowSpacing="0" ColumnSpacing="16" RowDefinitions="*,Auto,*,1" ColumnDefinitions="64,*">
+                
+                <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" BackgroundColor="{StaticResource LightGreyColor}"
+                      Margin="16,16,16,16" HeightRequest="64" WidthRequest="64">
+                    <Image Source="dotnet_bot.png" HeightRequest="32" WidthRequest="32" />
+
+                </Grid>
+
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Label}" FontSize="16" HorizontalOptions="Start"
+                        VerticalOptions="End" TextColor="{StaticResource DarkGreyColor}"
+                        FontAttributes="Bold" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding SecondLabel}" FontSize="12" HorizontalOptions="Start"
+                        VerticalOptions="Center" TextColor="{StaticResource MediumGreyColor}" />
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" VerticalOptions="Start"
+                                IsVisible="true">
+                    <Label Text="{Binding ThirdLabel}" FontSize="14" HorizontalOptions="Start"
+                            VerticalOptions="Center" TextColor="{StaticResource DarkBlueColor}" />
+                </HorizontalStackLayout>
+                
+                <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,16,0" HeightRequest="1"
+                         Color="{StaticResource SmokeGreyColor}" VerticalOptions="EndAndExpand" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="InventorySwipeToDeleteDataTemplate"
+                      x:DataType="viewModels:WiringAccessoriesHeatingPowerItemViewModel">
+            <Grid x:Name="genericSwipeView" RowDefinitions="Auto,1" MinimumHeightRequest="80">
+                <SwipeView Grid.Row="0">
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItemView>
+                                <ContentView BackgroundColor="Red">
+                                    <Label
+                                        Background="Red"
+                                        Margin="16,0,16,0"
+                                        Text="Delete"
+                                        HeightRequest="30" />
+                                </ContentView>
+                            </SwipeItemView>
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Grid>
+                        <VerticalStackLayout Spacing="0" Margin="16,13,16,13">
+                            <Label Text="{Binding Label}" MaxLines="1" LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource DarkGreyColor}" FontSize="16"
+                                   VerticalOptions="CenterAndExpand" />
+                            <Label Text="{Binding SecondLabel}" MaxLines="1" LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource MediumGreyColor}" VerticalOptions="CenterAndExpand"
+                                   FontSize="12" />
+                            <Label Text="{Binding ThirdLabel}" MaxLines="1" LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource MediumGreyColor}" VerticalOptions="CenterAndExpand"
+                                   FontSize="12" />
+                            <Label Text="{Binding FourthLabel}" MaxLines="1" LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource MediumGreyColor}" VerticalOptions="CenterAndExpand"
+                                   FontSize="12" />
+                            <Label Text="{Binding FifthLabel}" MaxLines="1" LineBreakMode="TailTruncation"
+                                   TextColor="{StaticResource MediumGreyColor}" VerticalOptions="CenterAndExpand"
+                                   FontSize="12" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </SwipeView>
+                <BoxView Grid.Row="1" Margin="16,0" HeightRequest="1" Color="{StaticResource SmokeGreyColor}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="InventoryPlateRockerImagesDetailsDataTemplate" x:DataType="viewModels:GenericImageDetailsItemViewModel">
+            <Grid RowDefinitions="Auto,1" ColumnDefinitions="64,*" RowSpacing="0" ColumnSpacing="16" Padding="16,0,0,0" BackgroundColor="Olive">
+                <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource LightGreyColor}" Margin="16"
+                      HeightRequest="64" WidthRequest="64">
+                    <Image Source="dotnet_bot.png" />
+                </Grid>
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="0">
+                    <Label
+                        Text="{Binding FirstLabel}"
+                        Margin="0,20,0,0" FontSize="16"
+                        TextColor="{StaticResource DarkGreyColor}"
+                        FontAttributes="{TemplateBinding TitleFontAttributes}" />
+                    <Label
+                        Text="{Binding SecondLabel}"
+                        FontSize="12"
+                        TextColor="{StaticResource MediumGreyColor}" />
+                </VerticalStackLayout>
+                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,0,16,0" HeightRequest="1"
+                         Color="{StaticResource SmokeGreyColor}" VerticalOptions="EndAndExpand" />
+            </Grid>
+        </DataTemplate>
+
+        <testProject:InventoryRoomsOverviewDataTemplateSelector x:Key="InventoryRoomsOverviewDataTemplateSelector"
+                                                                GenericSectionDataTemplate="{StaticResource GenericSectionDataTemplate}"
+                                                                GenericQuantityDataTemplate="{StaticResource GenericQuantityDataTemplate}"
+                                                                GenericDetailsWithQuantityDataTemplate="{StaticResource GenericDetailsWithQuantityDataTemplate}"
+                                                                InventoryDetailsDataTemplate="{StaticResource InventoryDetailsDataTemplate}"
+                                                                InventorySwipeToDeleteDataTemplate="{StaticResource InventorySwipeToDeleteDataTemplate}"
+                                                                InventoryPlateRockerImagesDetailsDataTemplate="{StaticResource InventoryPlateRockerImagesDetailsDataTemplate}" />
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="90,*">
+        <Button Grid.Row="0" Text="Open ListPicker Screen" Margin="20" BackgroundColor="OrangeRed" Clicked="Button_Clicked" />
+        <CollectionView ItemsSource="{Binding Items}" Grid.Row="1"
+                    ItemTemplate="{StaticResource InventoryRoomsOverviewDataTemplateSelector}" />
+    </Grid>
+</ContentPage>
