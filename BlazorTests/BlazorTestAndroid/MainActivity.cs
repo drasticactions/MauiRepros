@@ -18,6 +18,7 @@ public class MainActivity : Activity
         web_view = FindViewById<WebView>(Resource.Id.webview);
         web_view.Settings.JavaScriptEnabled = true;
         web_view.SetWebViewClient(new HelloWebViewClient());
+        // TODO: Add your local server ip address.
         web_view.LoadUrl("http://192.168.50.199:5001/");
     }
 
