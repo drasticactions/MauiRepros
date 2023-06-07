@@ -10,6 +10,57 @@
     <link href="css/app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="TestBlazorApp.styles.css" rel="stylesheet" />
+     <script>
+        window.downloadFileFromStream = async (fileName, array) => {
+            const arrayBuffer = array.buffer;
+            const blob = new Blob([arrayBuffer]);
+            const url = URL.createObjectURL(blob);
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.download = fileName ?? '';
+            // document.body.appendChild(anchorElement); // WORKAROUND
+            anchorElement.click();
+            anchorElement.remove();
+            URL.revokeObjectURL(url);
+        }
+        window.triggerFileDownload = (fileName, url) => {
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.download = fileName ?? '';
+            // document.body.appendChild(anchorElement); // WORKAROUND
+            anchorElement.click();
+            anchorElement.remove();
+        }
+        
+        var dataUrlToFile = function(dataUrl, fileName) {
+            DotNet.invokeMethodAsync('MauiApp1', 'DataUrlToFile', dataUrl, fileName)
+                .then(message => alert(message));
+        }
+        var windowClick = function(e) {
+            if (e.target.tagName === 'A') {
+                if (e.target.href.startsWith('blob:') ||
+                    e.target.href.endsWith('.txt')) {
+                    const fileName = e.target.download;
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', e.target.href, true);
+                    xhr.responseType = 'blob';
+                    xhr.onload = function () {
+                        if (this.status === 200) {
+                            const blob = this.response;
+                            const reader = new FileReader();
+                            reader.onload = () => dataUrlToFile(reader.result, fileName);
+                            reader.readAsDataURL(blob);
+                        }
+                    }
+                    xhr.send();
+                }
+                if (e.target.href.startsWith('data:'))
+                    dataUrlToFile(e.target.href, e.target.download); 
+                e.preventDefault();
+            }
+        }
+        // window.addEventListener('click', windowClick, true); // WORKAROUND
+    </script>
 </head>
 
 <body>

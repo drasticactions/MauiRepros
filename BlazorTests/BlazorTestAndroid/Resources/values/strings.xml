@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BlazorTestAndroid</string>
+    <string name="app_text">Hello, Android!</string>
+</resources>
