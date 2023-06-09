@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BugCollectionViewScrollDemo"
+             x:Class="BugCollectionViewScrollDemo.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <AbsoluteLayout AbsoluteLayout.LayoutFlags="All"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+        <Grid RowDefinitions="Auto, *"
+            AbsoluteLayout.LayoutFlags="All" 
+            AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout BackgroundColor="Cyan">
+                <Label Margin="15,5,0,5" Text="TEST TEST TEST"/>
+            </StackLayout>
+            <CollectionView Grid.Row="1"
+                x:Name="demoList"
+                ItemsSource="{Binding DemoList}"
+                Margin="0,20,0,20"
+                SelectionMode="None"
+                BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Margin="15,5" Spacing="1">
+                                <StackLayout Orientation="Horizontal" Spacing="1">
+                                    <Label Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        Text="{Binding DemoDate, StringFormat='{0:MM/dd/yyyy}'}">
+                                    </Label>
+                                    <Label Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        FontAttributes="Bold"
+                                        Text="{Binding DemoNumber}" />
+                                </StackLayout>
+                                <Label Grid.Column="0" Text="{Binding DemoName}"  LineBreakMode="TailTruncation" />
+                                <BoxView />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout BackgroundColor="Cyan">
+                <Label Margin="15,5,0,5" Text="TEST TEST TEST"/>
+            </StackLayout>
+        </Grid>
+        <Frame x:Name="MultiActionButtonFullFrame"
+               AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            BackgroundColor="Transparent"
+            BorderColor="Transparent"
+            CornerRadius="20"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="EndAndExpand"
+            Margin="0,2,20,22"
+            Padding="{OnPlatform iOS='2,0,-10,-10', Android='0,6,3,0'}"
+            AnchorX=".5">
+            <Button
+                Opacity="1"
+                WidthRequest="120"
+                CornerRadius="{OnPlatform iOS='25', Android='30'}"
+                FontSize="26"
+                Text="Inert"
+                FontAttributes="Bold"
+                Padding="{OnPlatform iOS='15,0,12,0', Android='10,0,10,0'}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="55">
+            </Button> 
+        </Frame>
+    </AbsoluteLayout>        
+</ContentPage>
+
