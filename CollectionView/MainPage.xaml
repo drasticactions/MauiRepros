@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1"
+             x:Class="MauiApp1.MainPage"
+             x:DataType="{x:Type vm:ViewModel}">
+
+    <VerticalStackLayout>
+        <Button Text="Select using Binding" Command="{Binding PreSelectUsingBindingCommand}" />
+        <Button Text="Select using Method" Command="{Binding PreSelectUsingMethodCommand}" />
+        <Button Text="Clear using Binding" Command="{Binding ClearUsingBindingCommand}" />
+        <CollectionView x:Name="collectionView"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="Multiple"
+                        SelectedItems="{Binding SelectedItems, Mode=TwoWay}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" FontSize="Small" Margin="10"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</ContentPage>
