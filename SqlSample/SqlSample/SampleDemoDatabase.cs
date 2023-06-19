@@ -19,8 +19,8 @@ namespace SqlSample
             database.CreateTable<OrderItem>();
 
             // Inserting items into table
-            database.Query<OrderItem>("INSERT INTO OrderItem(BillDate) values('2023-06-12')");
-
+            //database.Query<OrderItem>("INSERT INTO OrderItem(BillDate) values('2023-06-12')");
+            database.Insert(new OrderItem { BillDate = DateTime.Now });
         }
 
         public IEnumerable<OrderItem> GetItems()
