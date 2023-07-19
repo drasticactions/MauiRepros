@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePickerTest", "DatePickerTest\DatePickerTest.csproj", "{2982EBB6-19F9-4403-AC76-CCF94F1D26A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePickerTestCatalyst", "DatePickerTestCatalyst\DatePickerTestCatalyst.csproj", "{6F9853B9-D959-4554-8A1D-5E540812EFD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatePickerTestiOS", "DatePickerTestiOS\DatePickerTestiOS.csproj", "{C40B7746-7781-468E-A7D7-9C1EEDB0E86D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2982EBB6-19F9-4403-AC76-CCF94F1D26A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2982EBB6-19F9-4403-AC76-CCF94F1D26A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2982EBB6-19F9-4403-AC76-CCF94F1D26A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2982EBB6-19F9-4403-AC76-CCF94F1D26A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9853B9-D959-4554-8A1D-5E540812EFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9853B9-D959-4554-8A1D-5E540812EFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9853B9-D959-4554-8A1D-5E540812EFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9853B9-D959-4554-8A1D-5E540812EFD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C40B7746-7781-468E-A7D7-9C1EEDB0E86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40B7746-7781-468E-A7D7-9C1EEDB0E86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40B7746-7781-468E-A7D7-9C1EEDB0E86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40B7746-7781-468E-A7D7-9C1EEDB0E86D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

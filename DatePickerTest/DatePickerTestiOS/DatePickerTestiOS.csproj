@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CodesignKey>Apple Development: Miller Timothy (XJ6R5248D7)</CodesignKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatePickerTest\DatePickerTest.csproj" />
+  </ItemGroup>
+</Project>
