@@ -6,7 +6,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new MauiTabbedPage();
+		MainPage = new MainPage();
 	}
 }
 
@@ -15,6 +15,6 @@ public class MauiTabbedPage : TabbedPage
 	public MauiTabbedPage()
 	{
 		this.Children.Add(new MainPage());
-		this.Children.Add(new MainPage());
+		//this.Children.Add(new MainPage());
 	}
 }

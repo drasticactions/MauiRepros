@@ -19,6 +19,8 @@ public class AppDelegate : UIApplicationDelegate
         {
             AutoresizingMask = UIViewAutoresizing.All
         };
+        
+        webview.Cook
 
         vc.View!.AddSubview(webview);
         Window.RootViewController = vc;
@@ -27,7 +29,7 @@ public class AppDelegate : UIApplicationDelegate
         Window.MakeKeyAndVisible();
 
         webview.LoadRequest(new NSUrlRequest(
-            new NSUrl("https://file-examples.com/index.php/sample-documents-download/sample-pdf-download/")));
+            new NSUrl("https://amazon.com")));
 
         return true;
     }
