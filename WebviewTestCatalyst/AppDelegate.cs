@@ -18,13 +18,14 @@ public class AppDelegate : UIApplicationDelegate {
 		{
             AutoresizingMask = UIViewAutoresizing.All
         };
+		webview.AccessibilityActivate();
 		vc.View!.AddSubview (webview);
 		Window.RootViewController = vc;
 
 		// make the window visible
 		Window.MakeKeyAndVisible ();
 
-		webview.LoadRequest(new NSUrlRequest(new NSUrl("https://www.toptal.com/developers/keycode")));
+		webview.LoadRequest(new NSUrlRequest(new NSUrl("https://www.w3schools.com/html/html_forms.asp")));
 		return true;
 	}
 }

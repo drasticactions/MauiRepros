@@ -3,16 +3,25 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>WebviewTestCatalyst</string>
+    <string>MacTakePhoto</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.WebviewTestCatalyst</string>
+    <string>com.companyname.MacTakePhoto</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
+    <!-- The App store requires that ITSAppUsesNonExemptEncryption to be set -->
+    <!-- Please consult https://developer.apple.com/documentation/bundleresources/information_property_list/itsappusesnonexemptencryption -->
+    <!-- <key>ITSAppUsesNonExemptEncryption</key> -->
+    <!-- Please indicate <true/> or <false/> here. -->
+
+    <!-- Specify the category for your app here. -->
+    <!-- Please consult https://developer.apple.com/documentation/bundleresources/information_property_list/lsapplicationcategorytype -->
+    <!-- <key>LSApplicationCategoryType</key> -->
+    <!-- <string>public.app-category.YOUR-CATEGORY-HERE</string> -->
     <key>UIDeviceFamily</key>
     <array>
-        <integer>6</integer>
+        <integer>2</integer>
     </array>
     <key>UISupportedInterfaceOrientations</key>
     <array>
