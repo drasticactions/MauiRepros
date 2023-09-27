@@ -24,7 +24,7 @@
         private void Button_Clicked(object sender, EventArgs e)
         {
             var value = this.BaseGrid.Remove(this.TempLine);
-            this.BaseGrid.Add(this.TempLine);
+            this.BaseGrid.Add(this.TempLine, 3, 0);
         }
     }
 
