@@ -4,9 +4,11 @@
              x:Class="ListViewMaui7.MainPage">
 
     <Grid RowDefinitions="Auto, *">
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="5">
             <Button x:Name="AddButton" Clicked="AddButton_Clicked" Text="Add"/>
             <Button x:Name="RemoveButton" Clicked="RemoveButton_Clicked" Text="Remove"/>
+            <Button x:Name="TemplateItemsCount" Clicked="TemplateItemsCount_Clicked" Text="Generate Counts"/>
+            <Label x:Name="TemplateItems" Text="Template Items:"/>
         </VerticalStackLayout>
         <ListView Grid.Row="1" x:Name="ListView">
             <ListView.ItemTemplate>

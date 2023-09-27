@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LabelSettings.MainPage">
+
+    <Grid RowSpacing="10" RowDefinitions="*, Auto, Auto">
+        <ScrollView>
+            <!--<Grid>
+                <Label x:Name="LabelOptions" Text="Hello World" HorizontalOptions="End"/>
+            </Grid>-->
+            <Label x:Name="LabelOptions" Text="Hello World" HorizontalOptions="End"/>
+            <!--<Button x:Name="LabelOptions" Text="Hello World" HorizontalOptions="End"/>-->
+        </ScrollView>
+        <Label x:Name="LabelOptions2" Text="Hello World" HorizontalOptions="Center" Grid.Row="1"/>
+        <Button Grid.Row="2" Text="FlipLabelOptions" Clicked="Button_Clicked"/>
+    </Grid>
+
+</ContentPage>
