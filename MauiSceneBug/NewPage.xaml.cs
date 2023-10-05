@@ -20,6 +20,6 @@ public partial class NewPage : ContentPage
 
     private void Button_OnClickedCrash(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        throw new Exception();
     }
 }
