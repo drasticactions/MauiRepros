@@ -12,6 +12,10 @@ public class AppDelegate : UIApplicationDelegate {
 
 	public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 	{
+        CultureInfo.CurrentCulture = new CultureInfo("en-US");
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+        
 		// create a new window instance based on the screen size
 		Window = new UIWindow (UIScreen.MainScreen.Bounds);
 
@@ -21,7 +25,7 @@ public class AppDelegate : UIApplicationDelegate {
     
 		// make the window visible
 		Window.MakeKeyAndVisible ();
-        var langs = MauiLangLanguage.GenerateMauiLangLangauages();
+        
 		return true;
 	}
 }
@@ -32,8 +36,16 @@ public class StringListTableViewController : UITableViewController
     
     public StringListTableViewController()
     {
-        var langs = MauiLangLanguage.GenerateMauiLangLangauages();
-        this.stringList = langs.Select(x => $"Name: {x.CultureInfo.ToString()} - {x.CultureInfo.Name} - {x.CultureInfo.NativeName} - {x.CultureInfo.DisplayName} - {x.CultureInfo.EnglishName}").ToList();
+        this.stringList = new List<string>() { };
+        var regions = CultureInfo.GetCultures (CultureTypes.SpecificCultures)
+            .Select (culture => new RegionInfo (culture.Name))
+            .OrderBy (v => v.ThreeLetterISORegionName);
+        foreach (var r in regions) {
+            this.stringList.Add($"{r.ThreeLetterISORegionName} {r.NativeName} {r.Name} {r.EnglishName} {r.DisplayName}");
+        }
+        
+        //var langs = MauiLangLanguage.GenerateMauiLangLangauages();
+        //this.stringList = langs.Select(r => $"{r.CultureInfo.ThreeLetterISOLanguageName} {r.CultureInfo.NativeName} {r.CultureInfo.Name} {r.CultureInfo.EnglishName} {r.CultureInfo.DisplayName}").ToList();
     }
     
     public override void ViewDidLoad()
