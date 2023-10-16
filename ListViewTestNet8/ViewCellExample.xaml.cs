@@ -13,6 +13,12 @@ public partial class ViewCellExample : ContentPage
     public ViewCellExample()
     {
         InitializeComponent();
+        
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
         for(var i = 0; i < 100; i++)
         {
             _items.Add($"Item {i}");
