@@ -37,13 +37,13 @@ public class StringListTableViewController : UITableViewController
     public StringListTableViewController()
     {
         this.stringList = new List<string>() { };
-        var regions = CultureInfo.GetCultures (CultureTypes.SpecificCultures)
-            .Select (culture => new RegionInfo (culture.Name))
-            .OrderBy (v => v.ThreeLetterISORegionName);
-        foreach (var r in regions) {
-            this.stringList.Add($"{r.ThreeLetterISORegionName} {r.NativeName} {r.Name} {r.EnglishName} {r.DisplayName}");
-        }
-        
+
+        var regions = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+        foreach(var region in region)
+        // foreach (var r in regions) {
+        //     this.stringList.Add($"{r.ThreeLetterISORegionName} {r.NativeName} {r.Name} {r.EnglishName} {r.DisplayName}");
+        // }
+
         //var langs = MauiLangLanguage.GenerateMauiLangLangauages();
         //this.stringList = langs.Select(r => $"{r.CultureInfo.ThreeLetterISOLanguageName} {r.CultureInfo.NativeName} {r.CultureInfo.Name} {r.CultureInfo.EnglishName} {r.CultureInfo.DisplayName}").ToList();
     }

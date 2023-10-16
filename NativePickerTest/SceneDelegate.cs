@@ -1,4 +1,4 @@
-namespace CatalystMultiWindowTest;
+namespace NativePickerTest;
 
 [Register ("SceneDelegate")]
 public class SceneDelegate : UIResponder, IUIWindowSceneDelegate {
@@ -9,16 +9,6 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate {
 	[Export ("scene:willConnectToSession:options:")]
 	public void WillConnect (UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
 	{
-		 // This is a cheap way to create a new window for the sample.
-        // Normally, you would handle the connectionOptions and UserActivies to create the correct
-        // View Controller for your window.
-        // This is cheating...
-        this.Window = new UIWindow((UIWindowScene)scene);
-
-        this.Window.RootViewController = new SampleViewController();
-
-        this.Window.MakeKeyAndVisible();
-
 		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see UIApplicationDelegate `GetConfiguration` instead).
@@ -61,10 +51,4 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate {
 		// Use this method to save data, release shared resources, and store enough scene-specific state information
 		// to restore the scene back to its current state.
 	}
-
-	[Export("stateRestorationActivityForScene:")]
-		public virtual NSUserActivity? GetStateRestorationActivity(UIScene scene)
-		{
-			
-		}
 }

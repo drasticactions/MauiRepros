@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidCrashGrid", "AndroidCrashGrid.csproj", "{9CBC8EA6-CFD3-45AE-9FB3-AA3B94625634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CBC8EA6-CFD3-45AE-9FB3-AA3B94625634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBC8EA6-CFD3-45AE-9FB3-AA3B94625634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBC8EA6-CFD3-45AE-9FB3-AA3B94625634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBC8EA6-CFD3-45AE-9FB3-AA3B94625634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8B5A880-0317-4737-8DF4-E566BDEAEB88}
+	EndGlobalSection
+EndGlobal
