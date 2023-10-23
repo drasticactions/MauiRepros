@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAnimationTest.MainPage">
+
+    <AbsoluteLayout x:Name="AbsoluteLayoutView" BackgroundColor="Blue">
+        <Button Text="Add Box" Clicked="OnAddBoxClicked" AbsoluteLayout.LayoutBounds="0.5,0.9,0.2,0.1" AbsoluteLayout.LayoutFlags="All" />
+    </AbsoluteLayout>
+
+</ContentPage>
