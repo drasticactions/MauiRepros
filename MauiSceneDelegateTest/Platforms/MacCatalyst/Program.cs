@@ -10,6 +10,7 @@ public class Program
 	{
 		// if you want to use a different Application Delegate class from "AppDelegate"
 		// you can specify it here.
+		Preferences.Default.Set("NSQuitAlwaysKeepsWindows", false);
 		UIApplication.Main(args, null, typeof(AppDelegate));
 	}
 }
