@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
 		this.Collection.ItemsSource = this.ItemList;
 		_timer = new Timer(2000);
 		_timer.Elapsed += OnTimerElapsed;
-		//_timer.Start();
+		_timer.Start();
 	}
 
 	private void OnTimerElapsed(object sender, ElapsedEventArgs e)
