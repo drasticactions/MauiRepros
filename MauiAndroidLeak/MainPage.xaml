@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAndroidLeak.MainPage">
+
+   <CollectionView Grid.Row="1" SelectionMode="Single" x:Name="Collection">
+           <CollectionView.ItemTemplate>
+               <DataTemplate>
+                   <Grid RowSpacing="0"
+                         RowDefinitions="Auto,1"
+                         ColumnDefinitions="120,*,120,64">
+                       <Label Text="{Binding Name}"
+                              FontSize="24"
+                              WidthRequest="120"
+                              VerticalOptions="Center"
+                              HorizontalTextAlignment="Center" />
+                       <HorizontalStackLayout Grid.Column="1"
+                                              VerticalOptions="Center"
+                                              HorizontalOptions="{OnPlatform Center,Android=FillAndExpand}"
+                                              BindableLayout.ItemsSource="{Binding SubitemList}">
+                           <BindableLayout.ItemTemplate>
+                               <DataTemplate>
+                                   <HorizontalStackLayout Padding="2"
+                                                          Spacing="2">
+                                       <Label Text="{Binding Name}"
+                                              FontSize="24" />
+                                       <Entry Text="{Binding Description}"
+                                              FontSize="18"
+                                              Margin="0,5,0,0"
+                                              VerticalOptions="Center" />
+                                       <Picker />
+                                       <CheckBox />
+                                   </HorizontalStackLayout>
+                               </DataTemplate>
+                           </BindableLayout.ItemTemplate>
+                       </HorizontalStackLayout>
+                       <Entry Grid.Column="2"
+                              Text="{Binding Title}" />
+                       <CheckBox Grid.Column="3"
+                                 HorizontalOptions="Center"
+                                 IsChecked="{Binding IsEnable}" />
+                       <BoxView Grid.Row="1"
+                                Grid.ColumnSpan="3"
+                                Color="Gray"
+                                HeightRequest="1"
+                                HorizontalOptions="Fill" />
+                   </Grid>
+               </DataTemplate>
+           </CollectionView.ItemTemplate>
+       </CollectionView>
+
+</ContentPage>
