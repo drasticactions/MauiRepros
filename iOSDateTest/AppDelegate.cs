@@ -19,7 +19,7 @@ public class AppDelegate : UIApplicationDelegate {
 		vc.View!.AddSubview (new UILabel (Window!.Frame) {
 			BackgroundColor = UIColor.SystemBackground,
 			TextAlignment = UITextAlignment.Center,
-			Text = DateTime.Now.Date.ToString("MMM-dd-yyyy", CultureInfo.GetCultureInfo("en-US")),
+			Text = DateTime.Now.Date.ToString("MMM-dd-yyyy", CultureInfo.GetCultureInfo("en-CA")),
 			AutoresizingMask = UIViewAutoresizing.All,
 		});
 		Window.RootViewController = vc;

@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
-    <HybridGlobalization>false</HybridGlobalization>
+    <HybridGlobalization>true</HybridGlobalization>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CodesignKey>Apple Development: Miller Timothy (XJ6R5248D7)</CodesignKey>
