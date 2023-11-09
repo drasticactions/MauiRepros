@@ -24,7 +24,26 @@ public partial class MainPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        this.TestView.ItemsSource = new ObservableCollection<Monkey>();
+        if (this.TestView.EmptyView is not null)
+        {
+            Debug.WriteLine($"EmptyView was {this.TestView.EmptyView.GetType().Name}");
+        }
+        else
+        {
+            Debug.WriteLine($"EmptyView was null");
+        }
+
+        if (this.TestView.EmptyViewTemplate is not null)
+        {
+            Debug.WriteLine($"EmptyViewTemplate was {this.TestView.EmptyViewTemplate.GetType().Name}");
+        }
+        else
+        {
+            Debug.WriteLine($"EmptyViewTemplate was null");
+        }
+        
+        this.TestView.EmptyView = null;
+        this.TestView.EmptyViewTemplate = null;
     }
 }
 

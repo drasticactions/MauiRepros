@@ -61,10 +61,10 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-           Command="{Binding ClearItemsCommand}"
+            Clicked="Button_Clicked"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Clear Items in CollectionView" />
+            Text="Set EmptyTemplate To Null" />
 
 
         <ActivityIndicator
