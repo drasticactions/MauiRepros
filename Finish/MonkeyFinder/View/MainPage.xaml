@@ -20,7 +20,7 @@
             Command="{Binding GetMonkeysCommand}"
             IsRefreshing="{Binding IsRefreshing}">
             <ContentView>
-                <CollectionView
+                <CollectionView x:Name="TestView"
                         ItemsSource="{Binding Monkeys}"
                         SelectionMode="None">
                     <CollectionView.EmptyView>
@@ -61,10 +61,10 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="8"
-            Command="{Binding GetClosestMonkeyCommand}"
+           Command="{Binding ClearItemsCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Find Closest" />
+            Text="Clear Items in CollectionView" />
 
 
         <ActivityIndicator

@@ -4,7 +4,7 @@ namespace MonkeyFinder.ViewModel;
 
 public partial class MonkeysViewModel : BaseViewModel
 {
-    public ObservableCollection<Monkey> Monkeys { get; } = new();
+    public ObservableCollection<Monkey> Monkeys { get; set; } = new();
     MonkeyService monkeyService;
     IConnectivity connectivity;
     IGeolocation geolocation;
@@ -32,6 +32,16 @@ public partial class MonkeysViewModel : BaseViewModel
     bool isRefreshing;
 
     [RelayCommand]
+    async Task ClearItems()
+    {
+        // Directly setting the Item Source with a new object.
+        // This is to see if Clear is correctly calling VisualDiagnostics.
+        //this.Monkeys = new ObservableCollection<Monkey>();
+
+        this.Monkeys.Clear();
+    }
+
+    [RelayCommand]
     async Task GetMonkeysAsync()
     {
         if (IsBusy)
@@ -47,12 +57,20 @@ public partial class MonkeysViewModel : BaseViewModel
             }
 
             IsBusy = true;
-            var monkeys = await monkeyService.GetMonkeys();
-            var list = monkeys.Take(3).ToList();
-            if(Monkeys.Count != 0)
+            //var monkeys = await monkeyService.GetMonkeys();
+            var list = new List<Monkey>();
+            if (Monkeys.Count != 0)
+            {
                 Monkeys.Clear();
+            }
+            else
+            {
+            }
 
-            foreach(var monkey in list)
+            // Instead of using cache service, create a new item every time.
+            list.Add(new());
+
+            foreach (var monkey in list)
                 Monkeys.Add(monkey);
 
         }
