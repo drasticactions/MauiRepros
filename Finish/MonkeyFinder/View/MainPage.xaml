@@ -64,7 +64,7 @@
             Clicked="Button_Clicked"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Set EmptyTemplate To Null" />
+            Text="Set EmptyView To Null" />
 
 
         <ActivityIndicator
