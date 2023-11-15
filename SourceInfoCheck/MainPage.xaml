@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SourceInfoCheck.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="This text won't change in hot reload"
+                   x:Name="referencedLabel"/>
+            <!-- <Label x:Name="firstLabel" Text="This control is preventing the other label from changing. (And changes to this will override the other one)"  -->
+            <!--       /> -->
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
