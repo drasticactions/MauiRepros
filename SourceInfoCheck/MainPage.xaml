@@ -9,8 +9,10 @@
             Spacing="25">
             <Label Text="This text won't change in hot reload"
                    x:Name="referencedLabel"/>
-            <!-- <Label x:Name="firstLabel" Text="This control is preventing the other label from changing. (And changes to this will override the other one)"  -->
-            <!--       /> -->
+            <Label x:Name="firstLabel" Text="This control is preventing the other label from changing. (And changes to this will override the other one)" 
+                   IsVisible="{Binding Source={x:Reference referencedLabel},Path=IsVisible}"/>
+            <Label x:Name="secondLabel" Text="This control is not referencing the other label, so it should have a different source info number." />
+            <Label x:Name="SourceInfoLabel"/>
         </VerticalStackLayout>
     </ScrollView>
 
