@@ -12,7 +12,7 @@
 
         private void Button_OnClicked(object? sender, EventArgs e)
         {
-            BoxDrawing.ContainerBackground = Brush.Brown;
+            this.ButtonColor.Text = ((SolidColorBrush)BoxDrawing.ContainerBackground!).Color.ToString();
         }
     }
 }
