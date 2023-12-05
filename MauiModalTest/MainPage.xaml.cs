@@ -13,5 +13,10 @@ public partial class MainPage : ContentPage
 	{
 		this.Navigation.PushModalAsync(new MainPage(), true);
 	}
+	
+	private void OnPushClicked(object sender, EventArgs e)
+	{
+		this.Navigation.PushAsync(new MainPage(), true);
+	}
 }
 
