@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WKWebViewRedirectTestCatalyst", "WKWebViewRedirectTestCatalyst\WKWebViewRedirectTestCatalyst.csproj", "{CEA8A21D-F5C7-4629-8CC0-BFED9DF94989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WKWebViewRedirectTestIOS", "WKWebViewRedirectTestIOS\WKWebViewRedirectTestIOS.csproj", "{D07EBB3F-DE55-42BB-87F4-B30807095B0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WKWebViewRedirectTestShared", "WKWebViewRedirectTestShared\WKWebViewRedirectTestShared.csproj", "{C4D23B7C-E7CF-45B1-86D8-EACACD840878}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEA8A21D-F5C7-4629-8CC0-BFED9DF94989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA8A21D-F5C7-4629-8CC0-BFED9DF94989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA8A21D-F5C7-4629-8CC0-BFED9DF94989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA8A21D-F5C7-4629-8CC0-BFED9DF94989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D07EBB3F-DE55-42BB-87F4-B30807095B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D07EBB3F-DE55-42BB-87F4-B30807095B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D07EBB3F-DE55-42BB-87F4-B30807095B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D07EBB3F-DE55-42BB-87F4-B30807095B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D23B7C-E7CF-45B1-86D8-EACACD840878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D23B7C-E7CF-45B1-86D8-EACACD840878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D23B7C-E7CF-45B1-86D8-EACACD840878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D23B7C-E7CF-45B1-86D8-EACACD840878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
