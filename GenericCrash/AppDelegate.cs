@@ -16,15 +16,25 @@ public class AppDelegate : UIApplicationDelegate {
 		// create a UIViewController with a single UILabel
 		var vc = new UIViewController ();
 		var button = new UIButton (Window!.Frame) {
-			BackgroundColor = UIColor.SystemBackground,
 			AutoresizingMask = UIViewAutoresizing.All,
 		};
 		button.SetTitle ("Click me for average!", UIControlState.Normal);
 		button.TouchUpInside += (sender, e) => {
-			var average = ListItems.Average (x => x.Cost);
-			var alert = UIAlertController.Create ("Average", $"The average is {average}", UIAlertControllerStyle.Alert);
-			alert.AddAction (UIAlertAction.Create ("OK", UIAlertActionStyle.Default, null));
-			vc.PresentViewController (alert, true, null);
+			try
+			{
+				var average = ListItems.Average(x => x.Cost);
+				var alert = UIAlertController.Create("Average", $"The average is {average}",
+					UIAlertControllerStyle.Alert);
+				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+				vc.PresentViewController(alert, true, null);
+			}
+			catch (Exception exception)
+			{
+				var alert = UIAlertController.Create("Error", exception.Message,
+					UIAlertControllerStyle.Alert);
+				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+				vc.PresentViewController(alert, true, null);
+			}
 		};
 		vc.View!.AddSubview (button);
 		Window.RootViewController = vc;
