@@ -4,6 +4,11 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="FormsMapsTest.MainPage">
 
-    <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="map" />
-
+    <ScrollView>
+        <StackLayout
+            Padding="30,0"
+            Spacing="25">
+            <maps:Map x:Name="map" HeightRequest="300"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

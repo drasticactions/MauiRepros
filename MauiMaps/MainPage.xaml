@@ -4,6 +4,16 @@
              xmlns:mapControl="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              x:Class="MauiMaps.MainPage">
 
-    <mapControl:Map x:Name="map" />
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <mapControl:Map HeightRequest="300" x:Name="map" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+   
 
 </ContentPage>
