@@ -4,6 +4,6 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="FormsMapsTest.MainPage">
 
-    <maps:Map x:Name="MapTest" />
+    <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="map" />
 
 </ContentPage>
