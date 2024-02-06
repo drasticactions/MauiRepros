@@ -5,5 +5,10 @@ namespace DisposeTest;
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {
-	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+	public static MauiApp CurrentApp { get; private set; }
+
+	protected override MauiApp CreateMauiApp()
+	{
+		return AppDelegate.CurrentApp = MauiProgram.CreateMauiApp();
+	}
 }
