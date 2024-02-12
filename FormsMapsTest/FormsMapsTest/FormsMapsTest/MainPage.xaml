@@ -5,10 +5,17 @@
              x:Class="FormsMapsTest.MainPage">
 
     <ScrollView>
-        <StackLayout
-            Padding="30,0"
-            Spacing="25">
-            <maps:Map x:Name="map" HeightRequest="300"/>
-        </StackLayout>
+        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextType="Html">
+            <Label.Text>
+                <![CDATA[
+            <strong>Bold Text</strong><br>
+            <em>italics</em><br>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+            </ul>
+        ]]>
+            </Label.Text>
+        </Label>
     </ScrollView>
 </ContentPage>
