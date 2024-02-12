@@ -45,6 +45,7 @@
 		3A6037242B7A7415004D22EC /* WebViewMediaDevicesTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewMediaDevicesTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6037282B7A7415004D22EC /* WebViewMediaDevicesTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMediaDevicesTestUITests.swift; sourceTree = "<group>"; };
 		3A60372A2B7A7415004D22EC /* WebViewMediaDevicesTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewMediaDevicesTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A6037372B7A7908004D22EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 		3A60370B2B7A7414004D22EC /* WebViewMediaDevicesTest */ = {
 			isa = PBXGroup;
 			children = (
+				3A6037372B7A7908004D22EC /* Info.plist */,
 				3A60370C2B7A7414004D22EC /* WebViewMediaDevicesTestApp.swift */,
 				3A60370E2B7A7414004D22EC /* ContentView.swift */,
 				3A6037102B7A7415004D22EC /* Assets.xcassets */,
@@ -422,8 +424,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WebViewMediaDevicesTest/Preview Content\"";
 				DEVELOPMENT_TEAM = 4RY43FCKF8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WebViewMediaDevicesTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -461,8 +465,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WebViewMediaDevicesTest/Preview Content\"";
 				DEVELOPMENT_TEAM = 4RY43FCKF8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WebViewMediaDevicesTest/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

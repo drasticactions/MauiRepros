@@ -24,6 +24,9 @@ struct WebView: UIViewRepresentable {
     let url: String
     
     func makeUIView(context: Context) -> WKWebView {
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.mediaTypesRequiringUserActionForPlayback = []
+        webConfiguration.allowsInlineMediaPlayback = true
         let view = WKWebView()
         view.isInspectable = true
         return view
