@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiStackResize.MainPage">
+
+    <Grid RowSpacing="5" RowDefinitions="Auto, *">
+
+        <HorizontalStackLayout Margin="5" HorizontalOptions="Center">
+            <Button Text="Change Layout" Clicked="Button_Clicked"/>
+        </HorizontalStackLayout>
+        
+        <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Orientation="{Binding StackLayoutOrientation}">
+
+            <Label Text="1"
+           BackgroundColor="DarkRed"
+           HeightRequest="100"
+           WidthRequest="100" />
+
+            <Label Text="2"
+           BackgroundColor="DarkGreen"
+           HeightRequest="100"
+           WidthRequest="100" />
+
+            <Label VerticalOptions="Center" x:Name="OrientationName"/>
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
