@@ -10,6 +10,8 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.8.2" />
     <PackageReference Include="BarCode" Version="2024.2.1" />
+    <PackageReference Include="ParagonClipper" Version="6.4.2" />
   </ItemGroup>
 </Project>
