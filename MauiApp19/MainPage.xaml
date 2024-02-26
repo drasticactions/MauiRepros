@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:MauiApp19"
+             x:Class="MauiApp19.MainPage">
+
+  <ContentPage.Resources>
+    <DataTemplate x:Key="RedTemplate">
+      <ViewCell>
+        <Grid HeightRequest="100" BackgroundColor="Red">
+          <Label Text="{Binding Text}" />
+        </Grid>
+      </ViewCell>
+    </DataTemplate>
+    <DataTemplate x:Key="BlueTemplate">
+      <ViewCell>
+        <Grid HeightRequest="300" BackgroundColor="Blue">
+          <Label Text="{Binding Text}" />
+        </Grid>
+      </ViewCell>
+    </DataTemplate>
+
+    <DataTemplate x:Key="GreenTemplate">
+      <ViewCell>
+        <Grid HeightRequest="500" BackgroundColor="Green">
+          <Label Text="{Binding Text}" />
+        </Grid>
+      </ViewCell>
+    </DataTemplate>
+    <local:TestDataTemplateSelector x:Key="TestDataTemplateSelector" RedItem="{StaticResource RedTemplate}"
+                                    BlueItem="{StaticResource BlueTemplate}" GreenItem="{StaticResource GreenTemplate}" />
+  </ContentPage.Resources>
+
+  <Grid RowDefinitions="Auto, *, Auto">
+    <Button Text="Add Item" Clicked="Button_Clicked"/>
+    <ListView CachingStrategy="RecycleElementAndDataTemplate"
+              Grid.Row="1"
+              HasUnevenRows="True"
+              ItemTemplate="{StaticResource TestDataTemplateSelector}"
+              ItemsSource="{Binding Items}">
+
+    </ListView>
+    <Button Grid.Row="2" Text="Remove Item" Clicked="Button_Clicked_1"/>
+  </Grid>
+
+</ContentPage>
