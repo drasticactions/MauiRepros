@@ -33,7 +33,7 @@
 
   <Grid RowDefinitions="Auto, *, Auto">
     <Button Text="Add Item" Clicked="Button_Clicked"/>
-    <ListView CachingStrategy="RecycleElementAndDataTemplate"
+    <ListView
               Grid.Row="1"
               HasUnevenRows="True"
               ItemTemplate="{StaticResource TestDataTemplateSelector}"
