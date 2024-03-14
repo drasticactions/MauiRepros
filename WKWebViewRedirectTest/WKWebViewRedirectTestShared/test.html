@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Click Alert</title>
+</head>
+<body>
+    <p>Click anywhere on this page.</p>
+    <script>
+        document.body.addEventListener("mousedown", event => {
+            if (event.button == 0) {
+                console.log("left click");
+                alert("left click"); // this works
+            } else if (event.button == 2) {
+                console.log("right click");
+                event.preventDefault(); // Prevent the default right-click menu.
+                alert("right click"); // this will work for right-click
+            }
+        });
+    
+        // Prevent the context menu from appearing when right-clicking anywhere in the body
+        document.body.addEventListener("contextmenu", event => event.preventDefault());
+    </script>
+</body>
+</html>
