@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AndroidTapThroughIssue.MainPage">
+
+    <Grid>
+        <StackLayout
+         Padding="30,0"
+         Spacing="25">
+            <Button
+             x:Name="CounterBtn"
+             Text="Click me" 
+             Clicked="OnCounterClicked"
+             HorizontalOptions="Fill" />
+        </StackLayout>
+
+        <Grid BackgroundColor="#55ff0000"></Grid>
+
+    </Grid>
+
+</ContentPage>
