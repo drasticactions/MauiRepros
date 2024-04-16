@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\Directory.build.targets = ..\Directory.build.targets
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Maui.Controls.HotReload.Forms", "..\..\..\..\..\..\src\UITools\HotReload\Source\Microsoft.Maui.Controls.HotReload.Forms\Microsoft.Maui.Controls.HotReload.Forms.csproj", "{DCC77E1A-3FC8-4D6C-9C4E-2A89F1CDA53D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Xamarin.HotReload.Xaml", "..\..\..\..\..\..\src\UITools\HotReload\Source\Xamarin.HotReload.Xaml\Xamarin.HotReload.Xaml.shproj", "{79BD11A0-858E-4B4F-A8BD-62C158B777BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,11 +27,18 @@ Global
 		{C60F2B1C-790E-4432-A719-52182A333ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C60F2B1C-790E-4432-A719-52182A333ADE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C60F2B1C-790E-4432-A719-52182A333ADE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DCC77E1A-3FC8-4D6C-9C4E-2A89F1CDA53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC77E1A-3FC8-4D6C-9C4E-2A89F1CDA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC77E1A-3FC8-4D6C-9C4E-2A89F1CDA53D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\..\..\..\src\UITools\HotReload\Source\Xamarin.HotReload.Xaml\Xamarin.HotReload.Xaml.projitems*{79bd11a0-858e-4b4f-a8bd-62c158b777bf}*SharedItemsImports = 13
+		..\..\..\..\..\..\src\UITools\HotReload\Source\Xamarin.HotReload.Xaml\Xamarin.HotReload.Xaml.projitems*{dcc77e1a-3fc8-4d6c-9c4e-2a89f1cda53d}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

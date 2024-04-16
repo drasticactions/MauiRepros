@@ -19,6 +19,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		<MauiVersion>7.0.101</MauiVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -40,5 +41,10 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\..\..\..\src\UITools\HotReload\Source\Microsoft.Maui.Controls.HotReload.Forms\Microsoft.Maui.Controls.HotReload.Forms.csproj" />
 	</ItemGroup>
 </Project>
