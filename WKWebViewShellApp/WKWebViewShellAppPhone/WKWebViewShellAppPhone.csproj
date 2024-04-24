@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WKWebViewShellApp\WKWebViewShellApp.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Drastic.Masonry" Version="1.0.2" />
+    <PackageReference Include="Drastic.PureLayout" Version="1.0.4" />
+  </ItemGroup>
+</Project>
