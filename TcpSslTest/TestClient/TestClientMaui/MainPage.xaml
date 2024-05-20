@@ -9,7 +9,7 @@
             Spacing="5">
             <Label x:Name="IsConnectedField"/>
             <Label Text="Address:"/>
-            <Entry x:Name="AddressField" Text="10.104.52.47"/>
+            <Entry x:Name="AddressField" Text="0.0.0.0"/>
             
             <Label Text="Port:"/>
             <Entry x:Name="PortField" Text="12345"/>

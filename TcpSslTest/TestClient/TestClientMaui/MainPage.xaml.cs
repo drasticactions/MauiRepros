@@ -17,24 +17,33 @@ public partial class MainPage : ContentPage
 
 	private async void Button_OnClicked(object? sender, EventArgs e)
 	{
-		if (!this.client.IsConnected)
+		try
 		{
-			if (string.IsNullOrEmpty(this.PortField.Text))
-			{
-				this.IsConnectedField.Text = "Port is required";
-				return;
-			}
-			
-			if (string.IsNullOrEmpty(this.AddressField.Text))
-			{
-				this.IsConnectedField.Text = "Address is required";
-				return;
-			}
-			
-			await this.client.ConnectAsync(this.AddressField.Text, int.Parse(this.PortField.Text));
-			
-			this.IsConnectedField.Text = IsConnected;
-		}
+            if (!this.client.IsConnected)
+            {
+                if (string.IsNullOrEmpty(this.PortField.Text))
+                {
+                    this.IsConnectedField.Text = "Port is required";
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(this.AddressField.Text))
+                {
+                    this.IsConnectedField.Text = "Address is required";
+                    return;
+                }
+
+                await this.client.ConnectAsync(this.AddressField.Text, int.Parse(this.PortField.Text));
+
+                this.IsConnectedField.Text = IsConnected;
+            }
+        }
+		catch (Exception ex)
+		{
+
+			Console.WriteLine(ex);
+			Console.WriteLine(ex.InnerException);
+        }
 	}
 
 	private async void Button2_OnClicked(object? sender, EventArgs e)
