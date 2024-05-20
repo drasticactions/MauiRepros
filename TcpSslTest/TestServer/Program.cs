@@ -14,6 +14,7 @@ Console.WriteLine("Hello, World!");
 
 var generator = new SelfSignedCertGenerator();
 var cert = generator.Generate();
+//var cert = new X509Certificate2("server.pfx", "password");
 TcpListener listener = new TcpListener(IPAddress.Any, 12345);
 listener.Start();
 
