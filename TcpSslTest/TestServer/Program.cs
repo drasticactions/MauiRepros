@@ -103,12 +103,12 @@ internal class SelfSignedCertGenerator
             (Collection<X509Extension>)CertificateExtensionsProperty!.GetValue(request)!;
         extensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.KeyEncipherment, true));
 
-        object? sanBuilder = Activator.CreateInstance(SanBuilderType!);
-        this.AddDnsNameMethod!.Invoke(sanBuilder, new object[] { "localhost" });
-
-        MethodInfo? buildMethod = SanBuilderType!.GetMethod("Build");
-        X509Extension sanExtension = (X509Extension)buildMethod!.Invoke(sanBuilder, null)!;
-        extensions.Add(sanExtension);
+        // object? sanBuilder = Activator.CreateInstance(SanBuilderType!);
+        // this.AddDnsNameMethod!.Invoke(sanBuilder, new object[] { "localhost" });
+        //
+        // MethodInfo? buildMethod = SanBuilderType!.GetMethod("Build");
+        // X509Extension sanExtension = (X509Extension)buildMethod!.Invoke(sanBuilder, null)!;
+        // extensions.Add(sanExtension);
 
         DateTimeOffset now = DateTimeOffset.UtcNow;
         X509Certificate2? cert = (X509Certificate2?)CreateSelfSignedMethod!.Invoke(
