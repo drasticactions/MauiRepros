@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
 	    {
 		    if (!this.client.IsConnected)
 		    {
-			    await this.client.ConnectAsync(internalServer.IPAddress, internalServer.Port);
+			    await this.client.ConnectAsync(internalServer.IPAddress, internalServer.Port, internalServer.Cert);
 			    this.IsConnectedField.Text = IsConnected;
 		    }
 	    }

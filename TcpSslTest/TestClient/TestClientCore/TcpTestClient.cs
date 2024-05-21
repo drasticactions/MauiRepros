@@ -26,12 +26,18 @@ public class TcpTestClient
     
     public bool IsConnected => client.Connected;
 
-    public async Task ConnectAsync(string address, int port)
+    public async Task ConnectAsync(string address, int port, X509Certificate2? cert = null)
     {
         await client.ConnectAsync(address, port);
         networkStream = client.GetStream();
-        var sslStream = new SslStream(this.networkStream, true, (a1, a2, a3, a4) => true);
-        await sslStream.AuthenticateAsClientAsync("localhost", null, SslProtocols.Tls13 | SslProtocols.Tls12, false);
+        var sslStream = new SslStream(this.networkStream, true, (a1, a2, a3, a4) => true, (sender, host, certificates, certificate, issuers) => cert);
+        X509Certificate2Collection? certificate2Collection = null;
+        if (cert != null)
+        {
+            certificate2Collection = new X509Certificate2Collection(cert);
+        }
+        
+        await sslStream.AuthenticateAsClientAsync("localhost", certificate2Collection, SslProtocols.Tls13 | SslProtocols.Tls12, false);
         stream = sslStream;
     }
 

@@ -26,6 +26,8 @@ namespace TestClientCore
         {
             listener = new TcpListener(System.Net.IPAddress.Any, 0);
         }
+        
+        public X509Certificate2 Cert => cert;
 
         public string IPAddress => ((System.Net.IPEndPoint)listener.LocalEndpoint).Address.ToString();
 
