@@ -15,7 +15,11 @@
             <Entry x:Name="PortField" Text="12345"/>
             
             <Button Text="Connect" Clicked="Button_OnClicked"/>
-            
+
+            <Button Text="Start Internal" Clicked="Button3_OnClicked"/>
+
+            <Button Text="Connect To Internal" Clicked="Button4_OnClicked"/>
+
             <Button Text="Send Message" Clicked="Button2_OnClicked"/>
         </VerticalStackLayout>
     </ScrollView>

@@ -1,6 +1,12 @@
+using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace TestClientCore;
@@ -25,7 +31,7 @@ public class TcpTestClient
         await client.ConnectAsync(address, port);
         networkStream = client.GetStream();
         var sslStream = new SslStream(this.networkStream, true, (a1, a2, a3, a4) => true);
-        await sslStream.AuthenticateAsClientAsync("testServer");
+        await sslStream.AuthenticateAsClientAsync("localhost", null, SslProtocols.Tls13, false);
         stream = sslStream;
     }
 
