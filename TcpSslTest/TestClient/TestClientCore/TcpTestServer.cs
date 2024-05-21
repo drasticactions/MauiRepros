@@ -33,17 +33,26 @@ namespace TestClientCore
 
         public void Start()
         {
-            listener.Start();
-            Console.WriteLine("Server started");
-            Task.Run(async () =>
+            try
             {
-                this.client = await listener.AcceptTcpClientAsync();
-                Console.WriteLine("Client connected");
-                networkStream = client.GetStream();
-                SslStream sslStream = new SslStream(networkStream, true, (a1, a2, a3, a4) => true);
-                await sslStream.AuthenticateAsServerAsync(cert, clientCertificateRequired: false, checkCertificateRevocation: true);
-                Read(client, sslStream);
-            });
+                Console.WriteLine("Server started");
+                listener.Start();
+                Task.Run(async () =>
+                {
+                    this.client = await listener.AcceptTcpClientAsync();
+                    Console.WriteLine("Client connected");
+                    networkStream = client.GetStream();
+                    SslStream sslStream = new SslStream(networkStream, true, (a1, a2, a3, a4) => true);
+                    await sslStream.AuthenticateAsServerAsync(cert, clientCertificateRequired: false,
+                        checkCertificateRevocation: true);
+                    Read(client, sslStream);
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         void Read(TcpClient client, Stream stream)

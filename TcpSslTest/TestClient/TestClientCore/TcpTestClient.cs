@@ -31,7 +31,7 @@ public class TcpTestClient
         await client.ConnectAsync(address, port);
         networkStream = client.GetStream();
         var sslStream = new SslStream(this.networkStream, true, (a1, a2, a3, a4) => true);
-        await sslStream.AuthenticateAsClientAsync("localhost", null, SslProtocols.Tls13, false);
+        await sslStream.AuthenticateAsClientAsync("localhost", null, SslProtocols.Tls13 | SslProtocols.Tls12, false);
         stream = sslStream;
     }
 

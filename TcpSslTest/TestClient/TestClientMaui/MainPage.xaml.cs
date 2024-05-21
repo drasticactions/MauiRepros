@@ -26,11 +26,20 @@ public partial class MainPage : ContentPage
 
     private async void Button4_OnClicked(object? sender, EventArgs e)
     {
-        if (!this.client.IsConnected)
-        {
-            await this.client.ConnectAsync(internalServer.IPAddress, internalServer.Port);
-            this.IsConnectedField.Text = IsConnected;
-        }
+	    try
+	    {
+		    if (!this.client.IsConnected)
+		    {
+			    await this.client.ConnectAsync(internalServer.IPAddress, internalServer.Port);
+			    this.IsConnectedField.Text = IsConnected;
+		    }
+	    }
+	    catch (Exception exception)
+	    {
+		    Console.WriteLine(exception);
+		    Console.WriteLine(exception.InnerException);
+		    throw;
+	    }
     }
 
 
