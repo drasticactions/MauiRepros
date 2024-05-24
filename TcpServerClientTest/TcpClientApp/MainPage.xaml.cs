@@ -86,8 +86,8 @@ public class TcpTestClient
 		stream = networkStream = client.GetStream();
 		if (authEnabled)
 		{
-			SslStream sslStream = new SslStream(networkStream, false);
-			await sslStream.AuthenticateAsClientAsync("10.0.2.2", new X509Certificate2Collection(), SslProtocols.Tls12, true);
+			SslStream sslStream = new SslStream(networkStream, false, (sender, certificate, chain, errors) => true);
+			await sslStream.AuthenticateAsClientAsync("localhost", new X509Certificate2Collection(), SslProtocols.Tls12, true);
 			stream = sslStream;
 		}
 	}

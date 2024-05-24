@@ -14,39 +14,56 @@ using System.Text;
 
 Console.WriteLine("Hello, World!");
 
-var generator = new SelfSignedCertGenerator();
-//var cert = generator.Generate();
-var cert = new X509Certificate2("testServer.pfx", "");
-TcpListener listener = new TcpListener(IPAddress.Any, 12345);
-listener.Start();
+var testServer = new TestServer();
+await testServer.RunServer();
 
-Console.WriteLine($"IP Address: {listener.LocalEndpoint}");
-Console.WriteLine($"Port: {((IPEndPoint)listener.LocalEndpoint).Port}");
+// Task.Run(async () => await testServer.RunServer()).FireAndForgetSafeAsync();
+//
+// Console.WriteLine("Press any key to exit...");
+// Console.ReadLine();
 
-Console.WriteLine("Waiting for a client to connect...");
-TcpClient client = await listener.AcceptTcpClientAsync();
 
-try
+class TestServer
 {
-    var networkStream = client.GetStream();
-    SslStream sslStream = new SslStream(networkStream, true, (a1, a2, a3, a4) => true, (b1, b2, b3, b4, b5) => cert);
-    sslStream.AuthenticateAsServer(cert, clientCertificateRequired: false, checkCertificateRevocation: false, enabledSslProtocols: SslProtocols.Tls13);
-
-    Read(client, sslStream);
-}
-catch (Exception ex)
-{
-    Debug.WriteLine(ex);
-    Debug.WriteLine(ex.InnerException);
-}
-
-void Read(TcpClient client, Stream stream)
-{
-    byte[] buffer = new byte[client.ReceiveBufferSize];
-    while (client.Connected)
+    public async Task RunServer()
     {
-        int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
-        Console.WriteLine(Encoding.ASCII.GetString(buffer, 0, bytesRead));
+        var generator = new SelfSignedCertGenerator();
+
+        var cert = generator.Generate();
+        TcpListener listener = new TcpListener(IPAddress.Any, 0);
+        listener.Start();
+
+        Console.WriteLine($"IP Address: {listener.LocalEndpoint}");
+        Console.WriteLine($"Port: {((IPEndPoint)listener.LocalEndpoint).Port}");
+
+        Console.WriteLine("Waiting for a client to connect...");
+        TcpClient client = await listener.AcceptTcpClientAsync();
+
+        try
+        {
+            var networkStream = client.GetStream();
+            SslStream sslStream =
+                new SslStream(networkStream, true, (a1, a2, a3, a4) => true, (b1, b2, b3, b4, b5) => cert);
+            sslStream.AuthenticateAsServer(cert, clientCertificateRequired: false, checkCertificateRevocation: false,
+                enabledSslProtocols: SslProtocols.Tls13);
+
+            Read(client, sslStream);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            Debug.WriteLine(ex.InnerException);
+        }
+
+        void Read(TcpClient client, Stream stream)
+        {
+            byte[] buffer = new byte[client.ReceiveBufferSize];
+            while (client.Connected)
+            {
+                int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
+                Console.WriteLine(Encoding.ASCII.GetString(buffer, 0, bytesRead));
+            }
+        }
     }
 }
 
@@ -133,5 +150,30 @@ internal class SelfSignedCertGenerator
         }
 
         return new X509Certificate2(cert!.Export(X509ContentType.Pfx));
+    }
+}
+
+/// <summary>
+/// Task Utilities.
+/// </summary>
+public static class TaskUtilities
+{
+    /// <summary>
+    /// Fire and Forget Safe Async.
+    /// </summary>
+    /// <param name="task">Task to Fire and Forget.</param>
+    /// <param name="handler">Error Handler.</param>
+#pragma warning disable RECS0165 // Asynchronous methods should return a Task instead of void
+    public static async void FireAndForgetSafeAsync(this Task task)
+#pragma warning restore RECS0165 // Asynchronous methods should return a Task instead of void
+    {
+        try
+        {
+            await task;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
     }
 }

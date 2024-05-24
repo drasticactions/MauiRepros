@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Reflection;
@@ -11,7 +12,7 @@ using System.Text;
 
 Console.WriteLine("Hello, Tcp!");
 
-var server = new TcpTestServer(IPAddress.Loopback);
+var server = new TcpTestServer(IPAddress.Any);
 
 Console.WriteLine($"Server IP: {server.IPAddress}");
 Console.WriteLine($"Server Port: {server.Port}");
@@ -19,7 +20,7 @@ Console.WriteLine($"Server Port: {server.Port}");
 Console.WriteLine("With auth? y for yes, any other key for no");
 var withAuth = Console.ReadLine().ToLower() == "y";
 
-Task.Run(() => server.Start(withAuth)).FireAndForgetSafeAsync();
+Task.Run(async () => await server.StartAsync(withAuth)).FireAndForgetSafeAsync();
 
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();
@@ -77,7 +78,7 @@ public class TcpTestServer
             networkStream = client.GetStream();
             if (withAuth)
             {
-                SslStream sslStream = new SslStream(networkStream, false);
+                SslStream sslStream = new SslStream(networkStream, false, (sender, certificate, chain, errors) => true);
                 await sslStream.AuthenticateAsServerAsync(cert, false, SslProtocols.Tls12, true);
                 Read(client, sslStream);
             }
@@ -178,6 +179,32 @@ public static class TaskUtilities
             HashAlgorithmName.SHA256,
             RSASignaturePadding.Pkcs1
             });
+            
+            Collection<X509Extension> extensions =
+                (Collection<X509Extension>)CertificateExtensionsProperty!.GetValue(request)!;
+            extensions.Add(new X509KeyUsageExtension(X509KeyUsageFlags.KeyEncipherment, true));
+
+            object? sanBuilder2 = Activator.CreateInstance(SanBuilderType!);
+            this.AddDnsNameMethod!.Invoke(sanBuilder2, new object[] { "localhost" });
+            this.AddDnsNameMethod!.Invoke(sanBuilder2, new object[] { "0.0.0.0" });
+            this.AddDnsNameMethod!.Invoke(sanBuilder2, new object[] { IPAddress.Loopback.ToString() });
+            foreach(var ip in NetworkUtils.DeviceIps())
+            {
+                this.AddDnsNameMethod!.Invoke(sanBuilder2, new object[] { ip });
+            }
+            
+            extensions.Add(
+                new X509EnhancedKeyUsageExtension(
+                    new OidCollection
+                    {
+                        new Oid("1.3.6.1.5.5.7.3.1")
+                    },
+                    false));
+
+
+            MethodInfo? buildMethod = SanBuilderType!.GetMethod("Build");
+            X509Extension sanExtension = (X509Extension)buildMethod!.Invoke(sanBuilder2, new object?[] { false })!;
+            extensions.Add(sanExtension);
           
             DateTimeOffset now = DateTimeOffset.UtcNow;
             X509Certificate2? cert = (X509Certificate2?)CreateSelfSignedMethod!.Invoke(
@@ -203,5 +230,24 @@ public static class TaskUtilities
 
             var bytes = cert!.Export(X509ContentType.Pfx);
             return new X509Certificate2(bytes);
+        }
+    }
+    
+    public static class NetworkUtils {
+        public static IEnumerable<string> DeviceIps ()
+        {
+            return GoodInterfaces ()
+                .SelectMany (x =>
+                    x.GetIPProperties ().UnicastAddresses
+                        .Where (y => y.Address.AddressFamily == AddressFamily.InterNetwork)
+                        .Select (y => y.Address.ToString ())).Union(new[] { "127.0.0.1" }).OrderBy(x=> x);
+        }
+
+        public static IEnumerable<NetworkInterface> GoodInterfaces ()
+        {
+            var allInterfaces = NetworkInterface.GetAllNetworkInterfaces ();
+            return allInterfaces.Where (x => x.NetworkInterfaceType != NetworkInterfaceType.Loopback &&
+                                             !x.Name.StartsWith ("pdp_ip", StringComparison.Ordinal) &&
+                                             x.OperationalStatus == OperationalStatus.Up);
         }
     }
