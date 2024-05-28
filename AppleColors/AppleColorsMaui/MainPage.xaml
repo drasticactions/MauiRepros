@@ -4,8 +4,8 @@
              x:Class="AppleColorsMaui.MainPage">
 
     <VerticalStackLayout Spacing="15" VerticalOptions="Center">
-        <Button FontSize="16" Text="⬛︎⬛︎⬛︎⬛︎⬛︎ Enabled XAML ⬛︎⬛︎⬛︎⬛︎⬛︎⬛︎" />
-        <Button FontSize="16" Text="⬛︎⬛︎⬛︎⬛︎⬛︎ Disabled XAML ⬛︎⬛︎⬛︎⬛︎⬛︎⬛︎" IsEnabled="False" />
+        <Button  Text="⬛︎⬛︎⬛︎⬛︎⬛︎ Enabled XAML ⬛︎⬛︎⬛︎⬛︎⬛︎⬛︎" />
+        <Button  Text="⬛︎⬛︎⬛︎⬛︎⬛︎ Disabled XAML ⬛︎⬛︎⬛︎⬛︎⬛︎⬛︎" IsEnabled="False" />
     </VerticalStackLayout>
 
 </ContentPage>
