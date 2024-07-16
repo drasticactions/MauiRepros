@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiHotReloadHandlerTest", "MauiHotReloadHandlerTest.csproj", "{47963458-C195-47BF-B429-A9D56C1E53DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47963458-C195-47BF-B429-A9D56C1E53DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47963458-C195-47BF-B429-A9D56C1E53DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47963458-C195-47BF-B429-A9D56C1E53DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47963458-C195-47BF-B429-A9D56C1E53DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4159520A-4C17-40C8-AF39-C329A13F7227}
+	EndGlobalSection
+EndGlobal
