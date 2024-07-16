@@ -16,9 +16,18 @@ public partial class MainPage : ContentPage
 		if (count == 1)
 			CounterBtn.Text = $"dd {count} time";
 		else
-			CounterBtn.Text = $"Clicked {count} times";
+			CounterBtn.Text = $"test {count} times";
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
+	}
+
+	[Microsoft.Maui.HotReload.OnHotReload]
+	static void OnHotReload()
+	{
+		Microsoft.Maui.Controls.Application.Current!.Dispatcher.DispatchAsync(async () => {
+
+            await Microsoft.Maui.Controls.Application.Current.MainPage!.DisplayAlert("Hot Reload", "Hot Reload was triggered", "OK");
+        });
 	}
 }
 
