@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolbarTestBinding", "ToolbarTestBinding\ToolbarTestBinding.csproj", "{51E0EBE7-B886-4023-8535-F70CAC03DA4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolbarTest", "ToolbarTest\ToolbarTest.csproj", "{0DC6C6EC-9CD6-4088-82DA-D6CF29F813D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51E0EBE7-B886-4023-8535-F70CAC03DA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E0EBE7-B886-4023-8535-F70CAC03DA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E0EBE7-B886-4023-8535-F70CAC03DA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E0EBE7-B886-4023-8535-F70CAC03DA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC6C6EC-9CD6-4088-82DA-D6CF29F813D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC6C6EC-9CD6-4088-82DA-D6CF29F813D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC6C6EC-9CD6-4088-82DA-D6CF29F813D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC6C6EC-9CD6-4088-82DA-D6CF29F813D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
